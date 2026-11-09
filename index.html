@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suomenojan Autohuolto Oy | Car repair and service in Suomenoja, Espoo</title>
+<meta name="description" content="Full-service independent garage on Suomalaistentie in Suomenoja, Espoo. Oil changes, brakes, timing belts, tires and engine work. Written estimate before work begins.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1e293b;
+    --ink-deep:#0f172a;
+    --paper:#faf9f7;
+    --paper-2:#f1efeb;
+    --red:#b91c1c;
+    --red-dark:#991b1b;
+    --line:#d8d4cc;
+    --line-dark:#334155;
+    --muted:#64748b;
+    --mono:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    --sans:"Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;}
+  ::selection{background:var(--red);color:#fff;}
+
+  /* ---------- top utility bar ---------- */
+  .topbar{
+    background:var(--ink-deep);
+    color:#cbd5e1;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.02em;
+  }
+  .topbar-inner{
+    max-width:1180px;margin:0 auto;padding:8px 20px;
+    display:flex;flex-wrap:wrap;gap:6px 24px;align-items:center;justify-content:space-between;
+  }
+  .topbar a{color:#f8fafc;text-decoration:none;border-bottom:1px solid #475569;}
+  .topbar a:hover{border-color:#f8fafc;}
+  .open-now{display:inline-flex;align-items:center;gap:7px;color:#cbd5e1;}
+  .open-dot{width:8px;height:8px;border-radius:50%;background:#64748b;flex:none;}
+  .open-now.is-open .open-dot{background:#22c55e;}
+  .open-now.is-open{color:#86efac;}
+  .open-now.is-closed{color:#fca5a5;}
+  .open-now.is-closed .open-dot{background:var(--red);}
+
+  /* ---------- header ---------- */
+  header.site{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;
+  }
+  .header-inner{
+    max-width:1180px;margin:0 auto;padding:14px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .wordmark{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .wordmark-badge{
+    width:40px;height:40px;background:var(--red);color:#fff;flex:none;
+    display:flex;align-items:center;justify-content:center;border-radius:4px;
+  }
+  .wordmark-text strong{display:block;font-weight:900;font-size:17px;letter-spacing:-.01em;line-height:1.1;text-transform:uppercase;}
+  .wordmark-text span{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px;}
+  nav.main{display:flex;gap:2px;}
+  nav.main a{
+    text-decoration:none;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+    padding:9px 13px;border-radius:4px;color:var(--ink);
+  }
+  nav.main a:hover{background:var(--paper-2);}
+  nav.main a.cta{background:var(--red);color:#fff;}
+  nav.main a.cta:hover{background:var(--red-dark);}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:4px;padding:8px 10px;cursor:pointer;color:var(--ink);}
+
+  /* ---------- bands ---------- */
+  .band{padding:88px 20px;}
+  .band-inner{max-width:1180px;margin:0 auto;}
+  .band--dark{background:var(--ink);color:#e2e8f0;}
+  .band--deep{background:var(--ink-deep);color:#e2e8f0;}
+  .band--light{background:var(--paper);}
+  .band--tint{background:var(--paper-2);}
+
+  .band-head{
+    display:flex;align-items:baseline;gap:26px;
+    border-bottom:2px solid currentColor;padding-bottom:22px;margin-bottom:44px;
+  }
+  .band-num{
+    font-family:var(--mono);font-weight:700;color:var(--red);
+    font-size:clamp(48px, 8vw, 96px);line-height:.9;letter-spacing:-.04em;flex:none;
+  }
+  .band--dark .band-num,.band--deep .band-num{color:#f87171;}
+  .band-title h2{
+    font-size:clamp(30px, 4.4vw, 54px);font-weight:900;letter-spacing:-.03em;line-height:1.02;text-transform:uppercase;
+  }
+  .band-title p{
+    font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin-top:8px;
+  }
+  .band--dark .band-title p,.band--deep .band-title p{color:#94a3b8;}
+
+  .lead{font-size:clamp(17px, 2vw, 20px);max-width:640px;}
+  .lead strong{font-weight:700;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:0;}
+  .hero-inner{
+    max-width:1180px;margin:0 auto;padding:84px 20px 0;
+  }
+  .hero-kicker{
+    font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:#f87171;display:flex;align-items:center;gap:10px;margin-bottom:26px;
+  }
+  .hero-kicker::before{content:"";width:34px;height:2px;background:var(--red);display:inline-block;}
+  .hero h1{
+    font-size:clamp(40px, 7vw, 86px);font-weight:900;letter-spacing:-.035em;line-height:.98;
+    text-transform:uppercase;max-width:14ch;
+  }
+  .hero h1 .accent{color:#f87171;}
+  .hero-sub{
+    margin-top:28px;max-width:560px;font-size:18px;color:#cbd5e1;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer;
+    font-weight:700;font-size:15px;padding:15px 26px;border-radius:6px;border:2px solid transparent;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn--red{background:var(--red);color:#fff;}
+  .btn--red:hover{background:var(--red-dark);}
+  .btn--ghost{border-color:#475569;color:#f8fafc;background:transparent;}
+  .btn--ghost:hover{border-color:#f8fafc;}
+  .btn .mono{font-family:var(--mono);font-weight:700;}
+  .hero-facts{
+    margin-top:64px;border-top:1px solid var(--line-dark);
+    display:grid;grid-template-columns:repeat(3, 1fr);
+  }
+  .hero-fact{
+    padding:26px 28px 30px;border-right:1px solid var(--line-dark);
+  }
+  .hero-fact:last-child{border-right:none;}
+  .hero-fact .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#94a3b8;}
+  .hero-fact .v{font-size:17px;font-weight:700;color:#f8fafc;margin-top:8px;line-height:1.35;}
+  .hero-photo{
+    max-width:1180px;margin:56px auto 0;padding:0 20px 0;
+  }
+  .hero-photo figure{
+    background:var(--ink-deep);
+    border:1px solid var(--line-dark);
+  }
+  .hero-photo img{width:100%;height:clamp(240px, 38vw, 460px);object-fit:cover;filter:saturate(.85);}
+  .hero-photo figcaption{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:#94a3b8;padding:12px 16px;border-top:1px solid var(--line-dark);
+  }
+
+  /* ---------- price table ---------- */
+  .price-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;}
+  .price-table{width:100%;border-collapse:collapse;}
+  .price-table tr{border-bottom:1px solid var(--line);}
+  .price-table tr:last-child{border-bottom:none;}
+  .price-table td{padding:15px 0;vertical-align:baseline;}
+  .price-table td.name{font-weight:600;font-size:16px;padding-right:16px;}
+  .price-table td.name small{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px;}
+  .price-table td.price{
+    font-family:var(--mono);font-weight:700;font-size:16px;text-align:right;white-space:nowrap;color:var(--red);
+  }
+  .price-note{
+    margin-top:36px;padding:18px 22px;border:1px solid var(--line);border-left:4px solid var(--red);
+    font-size:14px;color:#475569;max-width:760px;background:#fff;border-radius:0 6px 6px 0;
+  }
+
+  /* ---------- repair band ---------- */
+  .repair-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start;}
+  .repair-list{list-style:none;}
+  .repair-list li{
+    display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line-dark);
+  }
+  .repair-list li:last-child{border-bottom:none;}
+  .repair-code{
+    font-family:var(--mono);font-size:12px;color:#f87171;font-weight:700;flex:none;
+    padding-top:4px;letter-spacing:.08em;
+  }
+  .repair-list h3{font-size:18px;font-weight:800;color:#f8fafc;text-transform:uppercase;letter-spacing:.01em;}
+  .repair-list p{font-size:15px;color:#cbd5e1;margin-top:5px;max-width:52ch;}
+  .repair-photo figure{background:var(--ink-deep);border:1px solid var(--line-dark);}
+  .repair-photo img{width:100%;height:420px;object-fit:cover;filter:saturate(.85);}
+  .repair-photo figcaption{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:#94a3b8;padding:12px 16px;border-top:1px solid var(--line-dark);
+  }
+
+  /* ---------- tires band ---------- */
+  .tire-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;}
+  .tire-photo figure{background:#fff;border:1px solid var(--line);}
+  .tire-photo img{width:100%;height:440px;object-fit:cover;filter:saturate(.85);}
+  .tire-photo figcaption{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);padding:12px 16px;border-top:1px solid var(--line);
+  }
+  .tire-copy h3{font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:10px;}
+  .tire-copy p{font-size:16px;max-width:56ch;color:#334155;}
+  .tire-copy p + p{margin-top:14px;}
+  .tire-copy .price-table{margin-top:28px;background:#fff;border:1px solid var(--line);padding:0 22px;border-radius:6px;}
+
+  /* ---------- phone band ---------- */
+  .phone-band{padding:0;}
+  .phone-band figure{position:relative;background:var(--ink-deep);}
+  .phone-band img{
+    width:100%;height:clamp(340px, 46vw, 560px);object-fit:cover;
+    opacity:.35;filter:grayscale(.4) contrast(1.05);
+  }
+  .phone-overlay{
+    position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    padding:40px 20px;max-width:1180px;margin:0 auto;left:0;right:0;
+  }
+  .phone-overlay .k{
+    font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#fca5a5;
+  }
+  .phone-overlay a.big-phone{
+    font-family:var(--mono);font-weight:700;color:#fff;text-decoration:none;
+    font-size:clamp(34px, 7.4vw, 92px);letter-spacing:-.02em;line-height:1.05;margin-top:14px;
+    border-bottom:4px solid var(--red);display:inline-block;width:fit-content;
+  }
+  .phone-overlay a.big-phone:hover{color:#fecaca;}
+  .phone-overlay p{color:#cbd5e1;margin-top:18px;max-width:52ch;font-size:16px;}
+
+  /* ---------- visit band ---------- */
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .info-block{
+    border:2px solid var(--ink);background:#fff;border-radius:6px;
+  }
+  .info-block .ib-head{
+    font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    padding:14px 22px;border-bottom:2px solid var(--ink);background:var(--ink);color:#fff;
+    border-radius:4px 4px 0 0;display:flex;justify-content:space-between;gap:12px;align-items:center;
+  }
+  .info-block .ib-body{padding:24px 22px;}
+  .info-block dl{display:grid;grid-template-columns:auto 1fr;gap:8px 22px;font-size:15px;}
+  .info-block dt{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:2px;}
+  .info-block dd{font-weight:600;}
+  .info-block dd.mono{font-family:var(--mono);}
+  .info-block a{color:var(--red);font-weight:700;}
+  .hours-table{width:100%;border-collapse:collapse;font-size:15px;}
+  .hours-table td{padding:9px 0;border-bottom:1px solid var(--line);}
+  .hours-table tr:last-child td{border-bottom:none;}
+  .hours-table td.day{font-weight:600;}
+  .hours-table td.time{font-family:var(--mono);font-weight:700;text-align:right;}
+  .hours-table tr.closed td{color:var(--muted);}
+  .visit-copy p{font-size:16px;color:#334155;max-width:56ch;}
+  .visit-copy p + p{margin-top:14px;}
+  .visit-copy .btn{margin-top:24px;}
+  .btn--outline{border-color:var(--ink);color:var(--ink);background:transparent;}
+  .btn--outline:hover{background:var(--ink);color:#fff;}
+
+  /* ---------- booking band ---------- */
+  .book-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start;}
+  .book-copy p{color:#cbd5e1;font-size:16px;max-width:48ch;}
+  .book-copy p + p{margin-top:14px;}
+  .book-copy .steps{list-style:none;margin-top:26px;counter-reset:step;}
+  .book-copy .steps li{
+    counter-increment:step;display:flex;gap:16px;padding:13px 0;border-top:1px solid var(--line-dark);
+    font-size:15px;color:#e2e8f0;
+  }
+  .book-copy .steps li::before{
+    content:"0" counter(step);font-family:var(--mono);font-weight:700;color:#f87171;font-size:13px;padding-top:2px;
+  }
+  form.booking{background:#fff;color:var(--ink);border-radius:6px;padding:32px;border:1px solid var(--line-dark);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:7px;
+  }
+  .field input,.field textarea,.field select{
+    width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);
+    padding:13px 14px;border:1px solid #cbd5e1;border-radius:4px;background:var(--paper);
+  }
+  .field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--red);outline-offset:-1px;border-color:var(--red);}
+  .field textarea{min-height:120px;resize:vertical;}
+  .form-submit{width:100%;justify-content:center;font-size:16px;}
+  .form-ok{
+    display:none;margin-top:18px;padding:16px 18px;border:1px solid #16a34a;border-left:4px solid #16a34a;
+    background:#f0fdf4;color:#166534;font-size:15px;border-radius:0 6px 6px 0;
+  }
+  .form-ok strong{display:block;font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.06em;margin-bottom:4px;}
+
+  /* ---------- footer ---------- */
+  footer.site{background:var(--ink-deep);color:#94a3b8;border-top:1px solid var(--line-dark);}
+  .footer-inner{
+    max-width:1180px;margin:0 auto;padding:44px 20px;
+    display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;align-items:flex-start;
+  }
+  .footer-inner .f-name{font-weight:900;text-transform:uppercase;color:#f8fafc;font-size:16px;letter-spacing:-.01em;}
+  .footer-inner address{font-style:normal;font-size:14px;margin-top:8px;line-height:1.7;}
+  .footer-inner address a{color:#e2e8f0;text-decoration:none;border-bottom:1px solid #475569;font-family:var(--mono);}
+  .f-demo{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#64748b;}
+  .f-bottom{
+    border-top:1px solid var(--line-dark);
+    font-family:var(--mono);font-size:11px;color:#64748b;letter-spacing:.06em;
+  }
+  .f-bottom-inner{max-width:1180px;margin:0 auto;padding:16px 20px;display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between;}
+
+  /* ---------- mobile call bar ---------- */
+  .call-bar{
+    display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+    background:var(--red);color:#fff;text-decoration:none;
+    padding:15px 20px;text-align:center;font-weight:800;font-size:16px;
+    align-items:center;justify-content:center;gap:10px;
+    border-top:1px solid #7f1d1d;
+  }
+  .call-bar .mono{font-family:var(--mono);}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease, transform .55s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 960px){
+    .band{padding:64px 20px;}
+    .repair-grid,.tire-grid,.visit-grid,.book-grid{grid-template-columns:1fr;gap:40px;}
+    .repair-photo img,.tire-photo img{height:300px;}
+    .hero-facts{grid-template-columns:1fr;}
+    .hero-fact{border-right:none;border-bottom:1px solid var(--line-dark);}
+    .hero-fact:last-child{border-bottom:none;}
+  }
+  @media (max-width: 720px){
+    nav.main{
+      display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);
+      border-bottom:1px solid var(--line);flex-direction:column;padding:10px 20px 18px;gap:4px;
+    }
+    nav.main.open{display:flex;}
+    .menu-toggle{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;}
+    .price-cols{grid-template-columns:1fr;gap:0;}
+    .form-row{grid-template-columns:1fr;}
+    .band-head{gap:16px;}
+    form.booking{padding:24px 20px;}
+    body{padding-bottom:56px;}
+    .call-bar{display:flex;}
+    .hero-inner{padding-top:56px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>Suomalaistentie 5, 02270 Espoo</span>
+    <span class="open-now" id="openNow"><span class="open-dot"></span><span id="openNowText">Checking hours</span></span>
+    <span>Mon-Fri 08:00-17:00</span>
+    <a href="tel:+358293700">+358 29 3700</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="header-inner">
+    <a class="wordmark" href="#top" aria-label="Suomenojan Autohuolto Oy, back to top">
+      <span class="wordmark-badge" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg>
+      </span>
+      <span class="wordmark-text">
+        <strong>Suomenojan Autohuolto</strong>
+        <span>Independent garage, Espoo</span>
+      </span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      Menu
+    </button>
+    <nav class="main" id="mainNav">
+      <a href="#service">Service</a>
+      <a href="#repair">Repair</a>
+      <a href="#tires">Tires</a>
+      <a href="#visit">Visit us</a>
+      <a href="#book" class="cta">Book a time</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="band band--dark hero" id="top">
+  <div class="hero-inner">
+    <p class="hero-kicker">Suomenoja, Espoo, full-service garage</p>
+    <h1>Your car fixed. <span class="accent">Priced in writing first.</span></h1>
+    <p class="hero-sub">
+      Suomenojan Autohuolto Oy is an independent workshop on Suomalaistentie in Suomenoja.
+      We handle everything from oil changes to engine work, for all makes and models.
+      You always get a written estimate before we pick up a tool.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn--red" href="tel:+358293700">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9z"/></svg>
+        Call <span class="mono">+358 29 3700</span>
+      </a>
+      <a class="btn btn--ghost" href="#book">Request a booking</a>
+    </div>
+    <div class="hero-facts">
+      <div class="hero-fact">
+        <div class="k">Estimate</div>
+        <div class="v">Written quote before any work begins. No surprises on the invoice.</div>
+      </div>
+      <div class="hero-fact">
+        <div class="k">Coverage</div>
+        <div class="v">All makes and models, petrol, diesel, hybrid and electric.</div>
+      </div>
+      <div class="hero-fact">
+        <div class="k">Location</div>
+        <div class="v">Suomalaistentie 5, Suomenoja. Free customer parking at the door.</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <figure>
+      <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1600&q=80&auto=format&fit=crop" alt="Engine bay of a car being serviced in a workshop" loading="eager" onerror="this.style.display='none'">
+      <figcaption>Bay 1, engine service in progress</figcaption>
+    </figure>
+  </div>
+  <div style="height:88px"></div>
+</section>
+
+<!-- 01 SERVICE -->
+<section class="band band--light" id="service">
+  <div class="band-inner">
+    <div class="band-head reveal">
+      <div class="band-num">01</div>
+      <div class="band-title">
+        <h2>Service</h2>
+        <p>Scheduled maintenance, from-prices incl. VAT</p>
+      </div>
+    </div>
+    <p class="lead reveal" style="margin-bottom:44px">
+      Regular servicing keeps the warranty valid and the resale value up. We follow the
+      manufacturer's service schedule for your car and stamp the service book, digital or paper.
+    </p>
+    <div class="price-cols reveal">
+      <table class="price-table">
+        <tr><td class="name">Oil and filter change<small>OEM-grade oil, filter and disposal included</small></td><td class="price">from &euro;89</td></tr>
+        <tr><td class="name">Annual inspection service<small>Brakes, fluids, lights, suspension check</small></td><td class="price">from &euro;149</td></tr>
+        <tr><td class="name">Major service<small>Per manufacturer schedule, plugs and filters</small></td><td class="price">from &euro;349</td></tr>
+        <tr><td class="name">Timing belt kit replacement<small>Belt, tensioners and water pump</small></td><td class="price">from &euro;390</td></tr>
+      </table>
+      <table class="price-table">
+        <tr><td class="name">Air conditioning service<small>Refrigerant refill and leak check</small></td><td class="price">from &euro;79</td></tr>
+        <tr><td class="name">Brake fluid change<small>Full system flush, DOT 4</small></td><td class="price">from &euro;49</td></tr>
+        <tr><td class="name">Battery replacement<small>Incl. testing the charging system</small></td><td class="price">from &euro;119</td></tr>
+        <tr><td class="name">Pre-purchase inspection<small>Written report for a used car you plan to buy</small></td><td class="price">from &euro;95</td></tr>
+      </table>
+    </div>
+    <div class="price-note reveal">
+      From-prices include VAT 25.5% and apply to common passenger cars. The exact price depends on
+      your car's make, model and engine. We confirm the final price in a written estimate before work begins.
+    </div>
+  </div>
+</section>
+
+<!-- 02 REPAIR -->
+<section class="band band--dark" id="repair">
+  <div class="band-inner">
+    <div class="band-head reveal">
+      <div class="band-num">02</div>
+      <div class="band-title">
+        <h2>Repair</h2>
+        <p>Diagnostics to engine work, all makes</p>
+      </div>
+    </div>
+    <div class="repair-grid">
+      <div class="reveal">
+        <p class="lead" style="color:#e2e8f0;margin-bottom:26px">
+          Something rattles, leaks or refuses to start? Bring it in. We diagnose first,
+          explain what we found in plain language, then repair what actually needs repairing.
+        </p>
+        <ul class="repair-list">
+          <li>
+            <span class="repair-code">R-01</span>
+            <div>
+              <h3>Fault diagnostics</h3>
+              <p>OBD readout and hands-on troubleshooting for warning lights, electrical faults and strange noises. Diagnostic fee from &euro;55, waived if we carry out the repair.</p>
+            </div>
+          </li>
+          <li>
+            <span class="repair-code">R-02</span>
+            <div>
+              <h3>Brakes and suspension</h3>
+              <p>Pads, discs, calipers, shock absorbers and control arms. Brake pad replacement per axle from &euro;120 incl. parts.</p>
+            </div>
+          </li>
+          <li>
+            <span class="repair-code">R-03</span>
+            <div>
+              <h3>Engine and drivetrain</h3>
+              <p>From gasket leaks to clutch and gearbox work. Larger jobs always quoted in writing with parts and labour itemised.</p>
+            </div>
+          </li>
+          <li>
+            <span class="repair-code">R-04</span>
+            <div>
+              <h3>Exhaust and emissions</h3>
+              <p>Exhaust repair and replacement, lambda sensors, DPF and catalyst issues. We help you through the inspection (katsastus) if emissions are the problem.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="repair-photo reveal">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=1600&q=80&auto=format&fit=crop" alt="Mechanic working under a lifted car with professional tools" loading="lazy" onerror="this.style.display='none'">
+          <figcaption>Brake job on the lift, genuine or OEM parts on request</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 TIRES -->
+<section class="band band--tint" id="tires">
+  <div class="band-inner">
+    <div class="band-head reveal">
+      <div class="band-num">03</div>
+      <div class="band-title">
+        <h2>Tires</h2>
+        <p>Seasonal changes, storage and repair</p>
+      </div>
+    </div>
+    <div class="tire-grid">
+      <div class="tire-photo reveal">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=1600&q=80&auto=format&fit=crop" alt="Stack of car tires stored on racks in a workshop" loading="lazy" onerror="this.style.display='none'">
+          <figcaption>Season tire storage in a dry, dark room</figcaption>
+        </figure>
+      </div>
+      <div class="tire-copy reveal">
+        <h3>Two seasons, one visit each</h3>
+        <p>
+          Finnish weather is not negotiable. We swap your summer and winter tires, check tread
+          depth and pressure, and torque the bolts to spec. Store the off-season set with us and
+          skip hauling heavy wheels up the stairwell.
+        </p>
+        <p>
+          Nail in the tread? Most punctures can be repaired from the inside for a fraction of a
+          new tire. Sidewall damage means replacement, and we will tell you straight which one it is.
+        </p>
+        <table class="price-table">
+          <tr><td class="name">Seasonal tire change<small>Wheels off, on, torqued, pressure set</small></td><td class="price">from &euro;25</td></tr>
+          <tr><td class="name">Tire change incl. balancing<small>Per set of four</small></td><td class="price">from &euro;60</td></tr>
+          <tr><td class="name">Tire storage per season<small>Washed, labelled, climate-controlled room</small></td><td class="price">from &euro;60</td></tr>
+          <tr><td class="name">Puncture repair<small>Internal patch, tread area only</small></td><td class="price">from &euro;30</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 VISIT US -->
+<section class="band band--light" id="visit">
+  <div class="band-inner">
+    <div class="band-head reveal">
+      <div class="band-num">04</div>
+      <div class="band-title">
+        <h2>Visit us</h2>
+        <p>Suomenoja, Espoo, next to the ring road</p>
+      </div>
+    </div>
+    <div class="visit-grid">
+      <div class="reveal">
+        <div class="info-block">
+          <div class="ib-head">
+            <span>Workshop details</span>
+            <span id="openNowBadge">--</span>
+          </div>
+          <div class="ib-body">
+            <dl>
+              <dt>Address</dt>
+              <dd>Suomalaistentie 5, 02270 Espoo</dd>
+              <dt>Phone</dt>
+              <dd class="mono"><a href="tel:+358293700">+358 29 3700</a></dd>
+              <dt>Hours</dt>
+              <dd>
+                <table class="hours-table">
+                  <tr><td class="day">Monday to Friday</td><td class="time">08:00-17:00</td></tr>
+                  <tr class="closed"><td class="day">Saturday</td><td class="time">Closed</td></tr>
+                  <tr class="closed"><td class="day">Sunday</td><td class="time">Closed</td></tr>
+                </table>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <div class="visit-copy reveal">
+        <p>
+          You will find us on Suomalaistentie in Suomenoja, a few minutes from Ring I and the
+          L&auml;nsiv&auml;yl&auml; junction. Drop the car off in the morning and take the bus from
+          Finnoonsilta, or wait with a coffee while we do a tire change.
+        </p>
+        <p>
+          Typical workshop hours are Mon-Fri 08:00-17:00, Sat-Sun closed. If you need to leave
+          the car outside hours, call us and we will agree on a key handover.
+        </p>
+        <a class="btn btn--outline" href="https://www.google.com/maps/place/Suomenojan+Autohuolto+Oy/@60.1634499,24.7020803" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Get directions
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHONE BAND -->
+<section class="band band--deep phone-band">
+  <figure>
+    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1600&q=80&auto=format&fit=crop" alt="Car raised on a lift inside a professional repair workshop" loading="lazy" onerror="this.style.display='none'">
+    <div class="phone-overlay">
+      <span class="k">Fastest way to book, call the shop</span>
+      <a class="big-phone" href="tel:+358293700">+358 29 3700</a>
+      <p>Mon-Fri 08:00-17:00. If the line is busy we are under a car, leave a message and we call you back the same day.</p>
+    </div>
+  </figure>
+</section>
+
+<!-- BOOK -->
+<section class="band band--dark" id="book">
+  <div class="band-inner">
+    <div class="band-head reveal">
+      <div class="band-num">05</div>
+      <div class="band-title">
+        <h2>Book a time</h2>
+        <p>We reply within one working day</p>
+      </div>
+    </div>
+    <div class="book-grid">
+      <div class="book-copy reveal">
+        <p>
+          Tell us what your car needs and we come back with a time and a written estimate.
+          For anything urgent, calling <a href="tel:+358293700" style="color:#f87171;font-family:var(--mono);text-decoration:none;border-bottom:1px solid #f87171">+358 29 3700</a> is faster.
+        </p>
+        <ol class="steps">
+          <li>Send the form or call us. Describe the issue or the service you need.</li>
+          <li>We confirm a time and give you a written estimate before work begins.</li>
+          <li>Bring the car in. We call you if anything changes along the way.</li>
+        </ol>
+      </div>
+      <form class="booking reveal" id="bookingForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="fName">Name</label>
+            <input type="text" id="fName" name="name" autocomplete="name" required placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="fContact">Phone or email</label>
+            <input type="text" id="fContact" name="contact" autocomplete="tel" required placeholder="+358 ...">
+          </div>
+        </div>
+        <div class="field">
+          <label for="fCar">Car make and model (optional)</label>
+          <input type="text" id="fCar" name="car" placeholder="e.g. Toyota Corolla 2018">
+        </div>
+        <div class="field">
+          <label for="fMsg">What does the car need?</label>
+          <textarea id="fMsg" name="message" required placeholder="e.g. Winter tire change with storage, or: the engine warning light came on yesterday"></textarea>
+        </div>
+        <button type="submit" class="btn btn--red form-submit">Send booking request</button>
+        <div class="form-ok" id="formOk" role="status">
+          <strong>Request received</strong>
+          Thank you. We will get back to you within one working day with a time and a written estimate.
+          For urgent matters, call <span style="font-family:var(--mono)">+358 29 3700</span>.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="footer-inner">
+    <div>
+      <div class="f-name">Suomenojan Autohuolto Oy</div>
+      <address>
+        Suomalaistentie 5, 02270 Espoo<br>
+        <a href="tel:+358293700">+358 29 3700</a><br>
+        Mon-Fri 08:00-17:00, Sat-Sun closed
+      </address>
+    </div>
+    <div class="f-demo">Demo website</div>
+  </div>
+  <div class="f-bottom">
+    <div class="f-bottom-inner">
+      <span>Full-service garage in Suomenoja, Espoo</span>
+      <span>Demo website, not an official page of the business</span>
+    </div>
+  </div>
+</footer>
+
+<a class="call-bar" href="tel:+358293700" aria-label="Call Suomenojan Autohuolto">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9z"/></svg>
+  Call the shop <span class="mono">+358 29 3700</span>
+</a>
+
+<script>
+(function(){
+  "use strict";
+
+  // Mobile nav toggle
+  var toggle = document.getElementById("menuToggle");
+  var nav = document.getElementById("mainNav");
+  toggle.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  nav.addEventListener("click", function(e){
+    if (e.target.tagName === "A") {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // Open now indicator: Mon-Fri 08:00-17:00
+  var wrap = document.getElementById("openNow");
+  var text = document.getElementById("openNowText");
+  var badge = document.getElementById("openNowBadge");
+  function updateOpen(){
+    var now = new Date();
+    var day = now.getDay();
+    var mins = now.getHours() * 60 + now.getMinutes();
+    var open = day >= 1 && day <= 5 && mins >= 480 && mins < 1020;
+    wrap.classList.toggle("is-open", open);
+    wrap.classList.toggle("is-closed", !open);
+    text.textContent = open ? "Open now, closes 17:00" : "Closed, opens Mon-Fri 08:00";
+    badge.textContent = open ? "OPEN NOW" : "CLOSED";
+  }
+  updateOpen();
+  setInterval(updateOpen, 60000);
+
+  // Scroll reveal
+  var items = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  // Booking form, inline confirmation only
+  var form = document.getElementById("bookingForm");
+  var ok = document.getElementById("formOk");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = document.getElementById("fName");
+    var contact = document.getElementById("fContact");
+    var msg = document.getElementById("fMsg");
+    var valid = true;
+    [name, contact, msg].forEach(function(f){
+      if (!f.value.trim()) {
+        f.style.borderColor = "#b91c1c";
+        valid = false;
+      } else {
+        f.style.borderColor = "";
+      }
+    });
+    if (!valid) return;
+    ok.style.display = "block";
+    form.querySelector(".form-submit").disabled = true;
+    form.querySelector(".form-submit").textContent = "Request sent";
+    ok.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+})();
+</script>
+</body>
+</html>
